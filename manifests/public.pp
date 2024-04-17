@@ -6,7 +6,6 @@ node default {
         manual_npm_installs         => false,
         enable_tls                  => true,
         secondary_domains           => $::fqdn ? {
-            'srcomp.studentrobotics.org'    => ['srcomp.srobo.org'],
             default                         => [],
         },
     }

@@ -1,4 +1,4 @@
-var upstreamBase = 'https://srcomp.studentrobotics.org';
+var upstreamBase = 'https://comp.robohack.co.uk';
 
 var http = require('http');
 var request = require('request');

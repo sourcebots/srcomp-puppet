@@ -7,8 +7,8 @@ class compbox (
     Boolean             $track_source               = false,
     Array[String[1]]    $secondary_domains          = [],
 ) {
-    $comp_source    = 'https://github.com/PeterJCLaw'
-    $compstate      = 'https://github.com/PeterJCLaw/dummy-comp.git'
+    $comp_source    = 'https://github.com/sourcebots'
+    $compstate      = 'https://github.com/roboticsoutreach/dummy-comp.git'
     $compstate_path = '/srv/state'
 
     if $track_source {

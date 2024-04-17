@@ -46,7 +46,7 @@
     ```bash
     sudo apt install --yes puppet git
     rm -rf /etc/puppet
-    git clone --recurse-submodules https://github.com/PeterJCLaw/srcomp-puppet /etc/puppet
+    git clone --recurse-submodules https://github.com/sourcebots/srcomp-puppet /etc/puppet
     ```
 
 9. Set up public DNS for the machine.
