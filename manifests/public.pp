@@ -4,7 +4,7 @@ node default {
         configure_main_user_access  => false,
         # main_user                 => 'root',
         manual_npm_installs         => false,
-        enable_tls                  => true,
+        enable_tls                  => false,
         secondary_domains           => $::fqdn ? {
             default                         => [],
         },
