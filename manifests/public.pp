@@ -4,6 +4,7 @@ node default {
         configure_main_user_access  => false,
         # main_user                 => 'root',
         manual_npm_installs         => false,
-        enable_tls                  => false
+        enable_tls                  => false,
+        track_source                => true
     }
 }
