@@ -414,7 +414,7 @@ class compbox (
     vcsrepo { '/var/www/nwatchlive':
         ensure   => $vcs_ensure,
         provider => git,
-        source   => 'https://github.com/PeterJCLaw/nwatchlive',
+        source   => 'https://github.com/sourcebots/nwatchlive',
         user     => 'www-data',
         require  => File['/var/www']
     } ~>
