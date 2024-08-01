@@ -91,6 +91,11 @@ class compbox (
 
     class { 'compbox::firewall': }
 
+    file { '/home/root':
+        ensure => 'link',
+        target => '/root'
+    }
+
     # A user for shelling in to update the compstate
     user { 'srcomp':
         ensure      => present,
