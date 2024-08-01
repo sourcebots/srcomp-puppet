@@ -152,7 +152,7 @@ class compbox (
     # even though it's owned by another user (namely the srcomp user).
     file { '/etc/gitconfig':
         ensure  => file,
-        content => "# managed by puppet, changes will be overwritten\n\n[safe]\n\tdirectory = ${compstate_path}\n",
+        content => "# managed by puppet, changes will be overwritten\n\n[safe]\n\tdirectory = ${compstate_path}\n\tdirectory = ${ref_compstate}\n",
         owner   => 'root',
         mode    => '0644',
         require => Vcsrepo[$ref_compstate],
