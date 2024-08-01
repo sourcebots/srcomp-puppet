@@ -299,12 +299,13 @@ class compbox (
         mode    => '0664',
         require => Vcsrepo[$compstate_path],
     }
-    # Tell www-data's git processes to treat the compstate as a safe directory
-    # even though it's owned by another user (namely the srcmop user).
-    file { '/var/www/.gitconfig':
+    # Treat the compstate as a safe directory
+    # even though it's owned by another user (namely the srcomp user).
+    file { '/etc/gitconfig':
         ensure  => file,
-        content => "[safe]\n\tdirectory = ${compstate_path}\n",
-        owner   => 'www-data',
+        content => "# managed by puppet, changes will be overwritten\n\n[safe]\n\tdirectory = ${compstate_path}\n",
+        owner   => 'root',
+        mode    => '0644',
     }
 
     # Stream
