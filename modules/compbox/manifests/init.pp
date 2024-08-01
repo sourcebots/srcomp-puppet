@@ -148,6 +148,16 @@ class compbox (
         require   => User['srcomp'],
     }
 
+    # Treat the compstate as a safe directory
+    # even though it's owned by another user (namely the srcomp user).
+    file { '/etc/gitconfig':
+        ensure  => file,
+        content => "# managed by puppet, changes will be overwritten\n\n[safe]\n\tdirectory = ${compstate_path}\n",
+        owner   => 'root',
+        mode    => '0644',
+        require => Vcsrepo[$ref_compstate],
+    }
+
     package { ['python3-mido',
                'python3-paramiko',
                'python3-pil',
@@ -281,7 +291,7 @@ class compbox (
         user     => 'root',
         owner    => 'srcomp',
         group    => 'www-data',
-        require  => [User['srcomp'],Vcsrepo[$ref_compstate]],
+        require  => [User['srcomp'],Vcsrepo[$ref_compstate],File['/etc/gitconfig']],
     }
     # Update trigger and lock files
     file { "${compstate_path}/.update-pls":
@@ -298,14 +308,6 @@ class compbox (
         group   => 'www-data',
         mode    => '0664',
         require => Vcsrepo[$compstate_path],
-    }
-    # Treat the compstate as a safe directory
-    # even though it's owned by another user (namely the srcomp user).
-    file { '/etc/gitconfig':
-        ensure  => file,
-        content => "# managed by puppet, changes will be overwritten\n\n[safe]\n\tdirectory = ${compstate_path}\n",
-        owner   => 'root',
-        mode    => '0644',
     }
 
     # Stream
