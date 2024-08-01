@@ -1,8 +1,7 @@
 node default {
     class { compbox:
-        # Main user access is configured manually
-        configure_main_user_access  => false,
-        # main_user                 => 'root',
+        configure_main_user_access  => true,
+        main_user                   => 'root',
         manual_npm_installs         => false,
         enable_tls                  => false,
         track_source                => true
